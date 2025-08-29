@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom right, #5d36c2, #9453a6, #c28186);
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .link-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .profile-pic {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .title {
+            animation: slideIn 1s ease-in-out;
+        }
+        .link-card {
+            animation: fadeIn 1s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes appear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .fade-in-up {
+            animation: appear 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+
+    <main class="w-full max-w-lg mx-auto text-center py-10">
+        <!-- Foto de perfil -->
+        <div class="mb-6">
+            <img src="https://live.staticflickr.com/65535/54752232034_59e044dcdc_n.jpg" alt="Foto de perfil de Adelson Elias" class="profile-pic w-32 h-32 rounded-full mx-auto border-4 border-white shadow-xl">
+        </div>
+
+        <!-- Título/Nome -->
+        <h1 class="title text-3xl md:text-4xl font-bold mb-8">Adelson Elias</h1>
+        
+        <!-- Contêiner de links -->
+        <div id="links-container" class="space-y-4">
+            <!-- Os links serão adicionados dinamicamente por JS -->
+        </div>
+    </main>
+
+    <footer class="text-center text-sm py-4">
+        &copy; 2024 Meus Links. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // Array de objetos com seus links
+        const socialLinks = [
+            { name: "Instagram", url: "https://www.instagram.com/adelsonelias", icon: "fab fa-instagram", color: "from-pink-500 to-purple-600" },
+            { name: "Twitter (X)", url: "https://twitter.com/adelsoneliash", icon: "fab fa-x-twitter", color: "from-slate-600 to-slate-800" },
+            { name: "GitHub", url: "https://github.com/adehas25", icon: "fab fa-github", color: "from-gray-700 to-gray-900" },
+            { name: "LinkedIn", url: "https://www.linkedin.com/in/adelson-elias-5a97ab36a/", icon: "fab fa-linkedin", color: "from-blue-600 to-blue-800" },
+            { name: "YouTube", url: "https://www.youtube.com/@adelsoneliasoficial", icon: "fab fa-youtube", color: "from-red-600 to-red-800" }
+        ];
+
+        const linksContainer = document.getElementById('links-container');
+
+        // Função para criar e adicionar os cards de link
+        function createLinkCards() {
+            socialLinks.forEach((link, index) => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.target = "_blank";
+                linkElement.rel = "noopener noreferrer";
+                linkElement.className = `link-card flex items-center justify-center p-4 rounded-full shadow-lg text-lg font-semibold bg-gradient-to-r ${link.color} text-white hover:scale-105 transition-transform duration-300 ease-in-out`;
+                linkElement.style.animationDelay = `${index * 0.1}s`;
+
+                linkElement.innerHTML = `
+                    <i class="${link.icon} w-6 h-6 mr-3"></i>
+                    <span>${link.name}</span>
+                `;
+
+                linksContainer.appendChild(linkElement);
+            });
+        }
+
+        // Adiciona os cards de link ao carregar a página
+        window.onload = createLinkCards;
+
+        // Para personalizar:
+        // 1. A foto já foi adicionada. Se quiser mudar, substitua a URL no atributo 'src'.
+        // 2. Mude "Adelson Elias" pelo seu nome ou título, se necessário.
+        // 3. Edite o array socialLinks com seus próprios nomes, URLs, ícones e cores.
+        //    - Para encontrar ícones, visite a biblioteca Font Awesome (versão 6.x).
+        //    - Para cores, use as classes de gradiente do Tailwind CSS.
+    </script>
+</body>
+</html>
