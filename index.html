@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -53,36 +53,32 @@
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
 
     <main class="w-full max-w-lg mx-auto text-center py-10">
-        <!-- Foto de perfil -->
         <div class="mb-6">
             <img src="https://live.staticflickr.com/65535/54752232034_59e044dcdc_n.jpg" alt="Foto de perfil de Adelson Elias" class="profile-pic w-32 h-32 rounded-full mx-auto border-4 border-white shadow-xl">
         </div>
 
-        <!-- Título/Nome -->
         <h1 class="title text-3xl md:text-4xl font-bold mb-2">Adelson Elias</h1>
         
-        <!-- Texto de boas-vindas profissional -->
         <p class="mb-8 text-sm md:text-base opacity-90 leading-relaxed max-w-sm mx-auto">
             Bem-vindo ao meu espaço profissional. Aqui você encontra todos os meus projetos e redes sociais.
         </p>
 
-        <!-- Contêiner de links -->
         <div id="links-container" class="space-y-4">
-            <!-- Os links serão adicionados dinamicamente por JS -->
-        </div>
+            </div>
     </main>
 
     <footer class="text-center text-sm py-4">
-        &copy; 2024 Meus Links. Todos os direitos reservados.
+        &copy; 2025 Meus Links. Todos os direitos reservados.
     </footer>
 
     <script>
         // Array de objetos com seus links
         const socialLinks = [
             { name: "WhatsApp", url: "https://wa.me/5581998721990", icon: "fab fa-whatsapp", color: "from-green-500 to-green-700" },
-            { name: "Declara Fácil", url: "https://adehas25.github.io/declarafacil/", icon: "fas fa-file-alt", color: "from-cyan-500 to-blue-700" },
             { name: "Instagram", url: "https://www.instagram.com/adelsonelias", icon: "fab fa-instagram", color: "from-pink-500 to-purple-600" },
-            { name: "Twitter (X)", url: "https://twitter.com/adelsoneliash", icon: "fab fa-x-twitter", color: "from-slate-600 to-slate-800" },
+            // LOGO DO DECLARA FÁCIL ATUALIZADA
+            { name: "Declara Fácil", url: "https://adehas25.github.io/declarafacil/", htmlIcon: '<img src="https://live.staticflickr.com/65535/54761899522_0d25284838_t.jpg" alt="Logo Declara Fácil" class="w-6 h-6 mr-3 rounded-sm">', color: "from-cyan-500 to-blue-700" },
+            { name: "Notion", url: "https://hickory-chickadee-639.notion.site/Direito-1509137ee9938080a35edb8b3de41518?source=copy_link", htmlIcon: '<img src="https://live.staticflickr.com/65535/54761886877_1d7788504b_t.jpg" alt="Logo Notion" class="w-6 h-6 mr-3 rounded-sm">', color: "from-gray-800 to-black" },
             { name: "GitHub", url: "https://github.com/adehas25", icon: "fab fa-github", color: "from-gray-700 to-gray-900" },
             { name: "LinkedIn", url: "https://www.linkedin.com/in/adelson-elias-5a97ab36a/", icon: "fab fa-linkedin", color: "from-blue-600 to-blue-800" },
             { name: "YouTube", url: "https://www.youtube.com/@adelsoneliasoficial", icon: "fab fa-youtube", color: "from-red-600 to-red-800" }
@@ -90,7 +86,6 @@
 
         const linksContainer = document.getElementById('links-container');
 
-        // Função para criar e adicionar os cards de link
         function createLinkCards() {
             socialLinks.forEach((link, index) => {
                 const linkElement = document.createElement('a');
@@ -100,8 +95,10 @@
                 linkElement.className = `link-card flex items-center justify-center p-4 rounded-full shadow-lg text-lg font-semibold bg-gradient-to-r ${link.color} text-white hover:scale-105 transition-transform duration-300 ease-in-out`;
                 linkElement.style.animationDelay = `${index * 0.1}s`;
 
+                let iconHtml = link.htmlIcon ? link.htmlIcon : `<i class="${link.icon} w-6 h-6 mr-3"></i>`;
+                
                 linkElement.innerHTML = `
-                    <i class="${link.icon} w-6 h-6 mr-3"></i>
+                    ${iconHtml}
                     <span>${link.name}</span>
                 `;
 
@@ -109,15 +106,9 @@
             });
         }
 
-        // Adiciona os cards de link ao carregar a página
         window.onload = createLinkCards;
 
-        // Para personalizar:
-        // 1. A foto já foi adicionada. Se quiser mudar, substitua a URL no atributo 'src'.
-        // 2. Mude "Adelson Elias" pelo seu nome ou título, se necessário.
-        // 3. Edite o array socialLinks com seus próprios nomes, URLs, ícones e cores.
-        //    - Para encontrar ícones, visite a biblioteca Font Awesome (versão 6.x).
-        //    - Para cores, use as classes de gradiente do Tailwind CSS.
     </script>
 </body>
 </html>
+
